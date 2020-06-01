@@ -46,7 +46,7 @@ class BuildProjectCommand(private val id: String,
         val setting = runManager.getConfigurationById(id) ?: return BuildProjectResult(false)
         val config = setting.configuration
 
-        if (config is RunConfigurationBase && config.excludeCompileBeforeLaunchOption()) {
+        if (config is RunConfigurationBase<*> && config.excludeCompileBeforeLaunchOption()) {
             return BuildProjectResult(false)
         }
 

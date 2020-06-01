@@ -236,7 +236,7 @@ internal class OffsetTranslator(originalDocument: Document, private val myOrigin
 
         val sinceCommit = LinkedList<DocumentEvent>()
         originalDocument.addDocumentListener(object : DocumentListener {
-            override fun documentChanged(e: DocumentEvent?) {
+            override fun documentChanged(e: DocumentEvent) {
                 if (isUpToDate) {
                     val inverse = DocumentEventImpl(originalDocument, e!!.offset, e.newFragment, e.oldFragment, 0, false)
                     sinceCommit.addLast(inverse)

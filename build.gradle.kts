@@ -15,7 +15,7 @@ val kotlin_version: String by extra
 
 buildscript {
     var kotlin_version: String by extra
-    kotlin_version = "1.2.31"
+    kotlin_version = "1.3.31"
     repositories {
         mavenCentral()
         jcenter()
@@ -30,7 +30,7 @@ val CI = System.getenv("CI") != null
 
 plugins {
     idea
-    kotlin("jvm") version "1.2.31"
+    kotlin("jvm") version "1.3.31"
     id("org.jetbrains.intellij") version "0.3.1"
 }
 apply {
@@ -68,14 +68,14 @@ allprojects {
         updateSinceUntilBuild = false
         instrumentCode = false
         ideaDependencyCachePath = file("deps").absolutePath
-        setPlugins("properties", "maven", "junit", "Kotlin", "android", "gradle", "Groovy", "smali")
+        setPlugins("properties", "maven", "junit", "Kotlin", "android", "gradle", "Groovy", "smali", "java")
     }
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
             jvmTarget = "1.8"
-            languageVersion = "1.2"
-            apiVersion = "1.2"
+            languageVersion = "1.3"
+            apiVersion = "1.3"
         }
     }
 
@@ -98,9 +98,9 @@ project(":") {
     }
 
     dependencies {
-        compile("org.jetbrains.kotlin:kotlin-reflect:1.2.31")
+        compile("org.jetbrains.kotlin:kotlin-reflect:1.3.31")
         compile("org.eclipse.lsp4j:org.eclipse.lsp4j:0.4.0")
-        testCompile("org.jetbrains.kotlin:kotlin-test:1.2.31")
+        testCompile("org.jetbrains.kotlin:kotlin-test:1.3.31")
     }
 
     tasks.withType<Test> {

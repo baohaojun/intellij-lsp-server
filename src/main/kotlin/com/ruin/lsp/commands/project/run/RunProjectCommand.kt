@@ -80,7 +80,7 @@ fun isUpToDate(project: Project, config: RunConfiguration): Boolean {
         return false
     }
 
-    if (config is RunConfigurationBase && (config as RunConfigurationBase).excludeCompileBeforeLaunchOption()) {
+    if (config is RunConfigurationBase<*> && (config as RunConfigurationBase<*>).excludeCompileBeforeLaunchOption()) {
         return false
     }
 

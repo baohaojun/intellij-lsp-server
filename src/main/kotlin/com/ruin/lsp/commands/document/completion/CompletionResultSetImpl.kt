@@ -33,7 +33,7 @@ internal class CompletionResultSetImpl(consumer: Consumer<CompletionResult>, pri
     }
 
     override fun withPrefixMatcher(matcher: PrefixMatcher): CompletionResultSet {
-        return CompletionResultSetImpl(consumer, myLengthOfTextBeforePosition, matcher, contributor, parameters, sorter, this, cancelToken)
+        return CompletionResultSetImpl(consumer as Consumer<CompletionResult>, myLengthOfTextBeforePosition, matcher, contributor, parameters, sorter, this, cancelToken)
     }
 
     override fun stopHere() {
@@ -54,12 +54,12 @@ internal class CompletionResultSetImpl(consumer: Consumer<CompletionResult>, pri
     }
 
     override fun withRelevanceSorter(sorter: CompletionSorter): CompletionResultSet {
-        return CompletionResultSetImpl(consumer, myLengthOfTextBeforePosition, prefixMatcher,
+        return CompletionResultSetImpl(consumer as Consumer<CompletionResult>, myLengthOfTextBeforePosition, prefixMatcher,
             contributor, parameters, sorter as CompletionSorterImpl, this, cancelToken)
     }
 
     override fun addLookupAdvertisement(text: String) {
-        completionService.advertisementText = text
+        completionService.setAdvertisementText(text)
     }
 
     override fun caseInsensitive(): CompletionResultSet {
