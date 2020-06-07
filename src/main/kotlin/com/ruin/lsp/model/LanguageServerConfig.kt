@@ -9,7 +9,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
     storages = [(Storage(value = "intellij-lsp-server.xml"))]
 )
 class LanguageServerConfig : PersistentStateComponent<LanguageServerConfig> {
-    val DEFAULT_PORT_NUMBER = 8080
+    val DEFAULT_PORT_NUMBER = 9999
 
     var portNumber = DEFAULT_PORT_NUMBER
 
